@@ -5,18 +5,25 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+
 //초기 상태 get
 router.get('/keyboard', function(req, res){
+
+  "message":{
+       "text" : "어디서 먹을래?"
+   }
+}
   const menu = {
       "type": 'buttons',
-      "buttons": ["안녕", "메롱"]
+      "buttons": ["안에서!", "밖에서!"]
   };
 
   res.set({
       'content-type': 'application/json'
   }).send(JSON.stringify(menu));
 });
-
+/*
 //카톡 메시지 처리
 router.post('/message',function (req, res) {
 
@@ -112,5 +119,5 @@ router.post('/message',function (req, res) {
         }).send(JSON.stringify(massage));
     }
 });
-
+*/
 module.exports = router;
