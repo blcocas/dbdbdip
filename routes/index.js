@@ -34,7 +34,7 @@ router.post('/message',function (req, res) {
     {
       //"안녕"이라고 메시지 보내고
       //'누구니' '메롱' 버튼 보여줌
-      let massage = {
+      const massage = {
           "message": {
               "text": '안녕'
           },
@@ -57,7 +57,7 @@ router.post('/message',function (req, res) {
     {
       //"죽는다."이라고 메시지 보내고
       //'안녕' '누구니' 버튼 보여줌
-      let massage = {
+      const massage = {
           "message": {
               "text": '죽는다.'
           },
@@ -75,7 +75,7 @@ router.post('/message',function (req, res) {
     }
     else if(_obj.content == '누구니')
     {
-      let massage = {
+      const massage = {
           "message": {
               "text": '난 제니스'
           },
@@ -94,7 +94,7 @@ router.post('/message',function (req, res) {
     //예외 처리...
     //하지만 현재는 버튼 방식이기에 이 루틴을 탈 수가 없다.
     else {
-        let massage = {
+        const massage = {
             "message": {
                 "text": '못 알아 먹었다...'
             },
