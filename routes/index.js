@@ -12,7 +12,7 @@ router.get('/keyboard', function(req, res){
 
   const menu = {
       "type": 'buttons',
-      "buttons": ["이홍재", "박가영"]
+      "buttons": ["이홍재"]
   };
 
   res.send(menu);
@@ -27,6 +27,24 @@ router.post('/message', (req, res) => {
         content: req.body.content
     };
     console.log(_obj.content);
+
+  let message = {
+      "message": {
+          "text": '홍재님은 천재님입니다. 인정하십니까?.'
+      },
+      "keyboard": {
+          "type": "buttons",
+          "buttons": [
+              "맞다",
+              "인정한다",
+              "반박할 수 없다"
+          ]
+      },
+      "message": {
+          "text": '후훗 당신도 인정하는군요? 그럴줄 알았습니다.'
+      },
+  };
+    /*
     if(_obj.content == '이홍재') {
       let message = {
           "message": {
@@ -63,7 +81,7 @@ router.post('/message', (req, res) => {
           },
       }
     };
-
+    */
     res.send(message);
 });
 module.exports = router;
