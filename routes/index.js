@@ -28,6 +28,7 @@ router.post('/message', (req, res) => {
         type: req.body.type,
         content: req.body.content
     };
+    console.log(_obj.content);
     if(_obj.content == '이홍재') {
       let massage = {
           "message": {
