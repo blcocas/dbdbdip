@@ -15,9 +15,7 @@ router.get('/keyboard', function(req, res){
       "buttons": ["이홍재", "박가영"]
   };
 
-  res.set({
-      'content-type': 'application/json'
-  }).send(menu);
+  res.send(menu);
 });
 
 
@@ -66,8 +64,6 @@ router.post('/message', (req, res) => {
       }
     };
 
-    res.set({
-        'content-type': 'application/json'
-    }).send(message);
+    res.send(message);
 });
 module.exports = router;
