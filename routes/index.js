@@ -17,7 +17,7 @@ router.get('/keyboard', function(req, res){
 
   res.set({
       'content-type': 'application/json'
-  }).send(JSON.stringify(menu));
+  }).send(menu);
 });
 
 
@@ -30,7 +30,7 @@ router.post('/message', (req, res) => {
     };
     console.log(_obj.content);
     if(_obj.content == '이홍재') {
-      let massage = {
+      let message = {
           "message": {
               "text": '홍재님은 천재님입니다. 인정하십니까?.'
           },
@@ -48,7 +48,7 @@ router.post('/message', (req, res) => {
       }
     };
     if(_obj.content == '박가영') {
-      let massage = {
+      let message = {
           "message": {
               "text": '바까영은 바보다. 인정하십니까?.'
           },
@@ -68,6 +68,6 @@ router.post('/message', (req, res) => {
 
     res.set({
         'content-type': 'application/json'
-    }).send(JSON.stringify(massage));
+    }).send(message);
 });
 module.exports = router;
