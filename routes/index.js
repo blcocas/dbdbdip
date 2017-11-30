@@ -5,31 +5,19 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+//초기 상태 get
 router.get('/keyboard', function(req, res){
   const menu = {
-  	"message": {
-  		"text": [
-  		'밥은 어디서 먹을래??',
-  		'"학식" 이나 "외식" 이라 쓰시오',
-  		]
-  	},
-  	"keyboard": {
-    "type": 'buttons',
-    "buttons": [
-    	"학식",
-    	"외식",
-    	]
-  }
+      "type": 'buttons',
+      "buttons": ["안녕", "메롱"]
   };
 
   res.set({
-    'content-type': 'application/json'
+      'content-type': 'application/json'
   }).send(JSON.stringify(menu));
 });
 
-
-
+//카톡 메시지 처리
 router.post('/message',function (req, res) {
 
     const _obj = {
@@ -40,26 +28,44 @@ router.post('/message',function (req, res) {
 
     console.log(_obj.content)
 
-    if(_obj.content == '학식')
+
+    //안녕이라고 입력되었다면...
+    if(_obj.content == '안녕')
     {
-
-    }
-
-
-    else if(_obj.content == '외식')
-    {
-
-      const massage = {
+      //"안녕"이라고 메시지 보내고
+      //'누구니' '메롱' 버튼 보여줌
+      let massage = {
           "message": {
-              "text": '뭐 먹을래?'
+              "text": '안녕'
           },
           "keyboard": {
               "type": "buttons",
               "buttons": [
-                  "한식",
-                  "중식",
-                  "일식",
-                  "양식"
+                  "누구니",
+                  "메롱"
+              ]
+          }
+      };
+
+      //      카톡으로 전송
+      res.set({
+          'content-type': 'application/json'
+      }).send(JSON.stringify(massage));
+    }
+    //메롱이라고 입력되었다면
+    else if(_obj.content == '메롱')
+    {
+      //"죽는다."이라고 메시지 보내고
+      //'안녕' '누구니' 버튼 보여줌
+      let massage = {
+          "message": {
+              "text": '죽는다.'
+          },
+          "keyboard": {
+              "type": "buttons",
+              "buttons": [
+                  "안녕",
+                  "누구니"
               ]
           }
       };
@@ -67,19 +73,44 @@ router.post('/message',function (req, res) {
           'content-type': 'application/json'
       }).send(JSON.stringify(massage));
     }
-
-
-
-    else {
-        const massage = {
-            "message": {
-                "text": '못 알아 먹었다...'
-            }
-        }
-    };
-	res.set({
+    else if(_obj.content == '누구니')
+    {
+      let massage = {
+          "message": {
+              "text": '난 제니스'
+          },
+          "keyboard": {
+              "type": "buttons",
+              "buttons": [
+                  "안녕",
+                  "메롱"
+              ]
+          }
+      };
+      res.set({
           'content-type': 'application/json'
       }).send(JSON.stringify(massage));
-    });
+    }
+    //예외 처리...
+    //하지만 현재는 버튼 방식이기에 이 루틴을 탈 수가 없다.
+    else {
+        let massage = {
+            "message": {
+                "text": '못 알아 먹었다...'
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": [
+                    "안녕",
+                    "메롱",
+                    "누구니"
+                ]
+            }
+        };
+        res.set({
+            'content-type': 'application/json'
+        }).send(JSON.stringify(massage));
+    }
+});
 
 module.exports = router;
