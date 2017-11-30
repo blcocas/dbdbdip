@@ -12,7 +12,7 @@ router.get('/keyboard', function(req, res){
 
   const menu = {
       "type": 'buttons',
-      "buttons": ["안에서!", "밖에서!"]
+      "buttons": ["이홍재", "박가영"]
   };
 
   res.set({
@@ -28,20 +28,27 @@ router.post('/message', (req, res) => {
         type: req.body.type,
         content: req.body.content
     };
-
-    let massage = {
-        "message": {
-            "text": '뭘먹을지 선택하세요...'
-        },
-        "keyboard": {
-            "type": "buttons",
-            "buttons": [
-                "한식",
-                "일식",
-                "중식"
-            ]
-        }
+    if(obj.content == "이홍재") {
+      let massage = {
+          "message": {
+              "text": '홍재님은 천재님입니다 인정하십니까?.'
+          },
+          "keyboard": {
+              "type": "buttons",
+              "buttons": [
+                  "맞다",
+                  "인정한다",
+                  "반박할 수 없다"
+              ]
+          },
+          "message": {
+              "text": '후훗 당신도 인정하는군요? 그럴줄 알았습니다.'
+          },
+      }
     };
+
+
+
     res.set({
         'content-type': 'application/json'
     }).send(JSON.stringify(massage));
