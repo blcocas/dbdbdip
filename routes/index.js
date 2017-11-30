@@ -10,10 +10,6 @@ router.get('/', function(req, res, next) {
 //초기 상태 get
 router.get('/keyboard', function(req, res){
 
-  "message":{
-       "text" : "어디서 먹을래?"
-   }
-}
   const menu = {
       "type": 'buttons',
       "buttons": ["안에서!", "밖에서!"]
@@ -23,7 +19,7 @@ router.get('/keyboard', function(req, res){
       'content-type': 'application/json'
   }).send(JSON.stringify(menu));
 });
-/*
+
 //카톡 메시지 처리
 router.post('/message',function (req, res) {
 
@@ -41,7 +37,7 @@ router.post('/message',function (req, res) {
     {
       //"안녕"이라고 메시지 보내고
       //'누구니' '메롱' 버튼 보여줌
-      const massage = {
+      let message = {
           "message": {
               "text": '안녕'
           },
@@ -57,14 +53,14 @@ router.post('/message',function (req, res) {
       //      카톡으로 전송
       res.set({
           'content-type': 'application/json'
-      }).send(JSON.stringify(massage));
+      }).send(JSON.stringify(message));
     }
     //메롱이라고 입력되었다면
     else if(_obj.content == '메롱')
     {
       //"죽는다."이라고 메시지 보내고
       //'안녕' '누구니' 버튼 보여줌
-      const massage = {
+      let massage = {
           "message": {
               "text": '죽는다.'
           },
@@ -78,11 +74,11 @@ router.post('/message',function (req, res) {
       };
       res.set({
           'content-type': 'application/json'
-      }).send(JSON.stringify(massage));
+      }).send(JSON.stringify(message));
     }
     else if(_obj.content == '누구니')
     {
-      const massage = {
+      let massage = {
           "message": {
               "text": '난 제니스'
           },
@@ -96,12 +92,12 @@ router.post('/message',function (req, res) {
       };
       res.set({
           'content-type': 'application/json'
-      }).send(JSON.stringify(massage));
+      }).send(JSON.stringify(message));
     }
     //예외 처리...
     //하지만 현재는 버튼 방식이기에 이 루틴을 탈 수가 없다.
     else {
-        const massage = {
+        let massage = {
             "message": {
                 "text": '못 알아 먹었다...'
             },
@@ -116,8 +112,8 @@ router.post('/message',function (req, res) {
         };
         res.set({
             'content-type': 'application/json'
-        }).send(JSON.stringify(massage));
+        }).send(JSON.stringify(message));
     }
 });
-*/
+
 module.exports = router;
