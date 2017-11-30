@@ -28,10 +28,13 @@ router.post('/message', (req, res) => {
     };
     console.log(_obj.content);
 
-  let message = {
+    let message = {
       "message": {
-          "text": '홍재님은 천재님입니다. 인정하십니까?.'
-      },
+        "text": '홍재님은 천재님입니다. 인정하십니까?.'
+      }
+    };
+    res.send(message);
+    let message = {
       "keyboard": {
           "type": "buttons",
           "buttons": [
@@ -43,7 +46,8 @@ router.post('/message', (req, res) => {
       "message": {
           "text": '후훗 당신도 인정하는군요? 그럴줄 알았습니다.'
       },
-  };
+    };
+    res.send(message);
     /*
     if(_obj.content == '이홍재') {
       let message = {
@@ -82,6 +86,6 @@ router.post('/message', (req, res) => {
       }
     };
     */
-    res.send(message);
+
 });
 module.exports = router;
