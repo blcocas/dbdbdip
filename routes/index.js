@@ -28,10 +28,10 @@ router.post('/message', (req, res) => {
         type: req.body.type,
         content: req.body.content
     };
-    if(obj.content == "이홍재") {
+    if(_obj.content == "이홍재") {
       let massage = {
           "message": {
-              "text": '홍재님은 천재님입니다 인정하십니까?.'
+              "text": '홍재님은 천재님입니다. 인정하십니까?.'
           },
           "keyboard": {
               "type": "buttons",
@@ -46,8 +46,24 @@ router.post('/message', (req, res) => {
           },
       }
     };
-
-
+    if(_obj.content == "박가영") {
+      let massage = {
+          "message": {
+              "text": '바까영은 바보다. 인정하십니까?.'
+          },
+          "keyboard": {
+              "type": "buttons",
+              "buttons": [
+                  "맞다",
+                  "인정한다",
+                  "반박할 수 없다"
+              ]
+          },
+          "message": {
+              "text": '후훗 당신도 인정하는군요? 그럴줄 알았습니다.'
+          },
+      }
+    };
 
     res.set({
         'content-type': 'application/json'
