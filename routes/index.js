@@ -105,7 +105,7 @@ router.post('/message', (req, res) => {
     res.send(message);  
   }
 
-  else if(_obj.content ==  '처음으로 돌아갑니다.'){
+  else if(_obj.content ==  '처음으로'){
     res.redirect('../keyboard');
   }
 
