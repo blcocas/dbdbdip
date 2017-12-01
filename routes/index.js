@@ -18,8 +18,6 @@ var db = mysql.createConnection({
 db.connect();
 
 
-//버튼 라우팅
-var changemode = 0;
 //초기 상태 get
 router.get('/keyboard', function(req, res){
 
@@ -118,12 +116,12 @@ router.post('/message', (req, res) => {
         "text": '메뉴를 선택하세요.'
       }
     };
-    changemode = 1;
+    
     res.send(message);  
   }
 
   //종류선택
-  else if(changemode == 1){
+  else if(_obj.content == '한식' || _obj.content == '일식' || _obj.content == '중식' || _obj.content == '양식' || _obj.content == '술집' || _obj.content == '기타')
     console.log("여기1");
     console.log(_obj.content);
     let sql = 'select Rest_Name from FOOD_TYPE,RESTAURANT where Type_Num = T_Num and Type_Name = ?';
