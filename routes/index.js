@@ -132,7 +132,7 @@ router.post('/message', (req, res) => {
         console.log(rows[i].Rest_Name);
         tmp += rows[i].Rest_Name + '\n'
       }
-      cb();    
+         
       let cb = function(){
         console.log("2");
         console.log(tmp);
@@ -145,7 +145,8 @@ router.post('/message', (req, res) => {
           }
         };
         res.send(message);
-      };  
+      };
+      cb();   
     });
   }
 
