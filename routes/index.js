@@ -17,18 +17,7 @@ var db = mysql.createConnection({
 //db connect
 db.connect();
 
-//db query example
-let sql = 'select * from FOOD where Food_Name = ?';
 
-db.query(sql,[tmp]  ,function (err, rows, fields) {
-  if(rows[0]){
-    for(var i = 0; i<rows.length;i++){
-      //console.log(rows.Food_Name);
-      console.log(rows[i].Food_Name);
-      console.log(rows[i].Food_Num);
-    }
-  }
-});
 //버튼 라우팅
 var changemode = 0;
 //초기 상태 get
@@ -137,7 +126,7 @@ router.post('/message', (req, res) => {
   else if(changemode == 1){
     console.log(_obj.content);
     let sql = 'select Rest_Name from FOOD_TYPE,RESTAURANT where Type_Num = T_Num and Type_Name = ?';
-    let tmp;
+    var tmp;
     db.query(sql,[_obj.content]  ,function (err, rows, fields) {
       if(rows[0]){
         for(var i = 0; i<rows.length;i++){
