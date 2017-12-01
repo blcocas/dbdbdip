@@ -39,6 +39,9 @@ router.post('/message', (req, res) => {
               "안에서 먹을래",
               "밖에서 먹을래"
           ]
+      },
+      "message" : {
+        "text":'밖에서? 안에서?'
       }
     };
     res.send(message);
