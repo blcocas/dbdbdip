@@ -33,8 +33,13 @@ router.post('/message', (req, res) => {
   //처음 메뉴
   if(_obj.content == '처음으로'){
     let message = {
-      "type": 'buttons',
-      "buttons": ["안에서 먹을래", "밖에서 먹을래"]
+      "keyboard": {
+          "type": "buttons",
+          "buttons": [
+              "안에서 먹을래",
+              "밖에서 먹을래"
+          ]
+      }
     };
     res.send(message);
   }
