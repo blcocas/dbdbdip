@@ -105,6 +105,15 @@ router.post('/message', (req, res) => {
     res.send(message);  
   }
   
+  if(_obj.content){
+    console.log("나머지");
+    let message = {
+      "message": {
+        "test" : '안녕하세여'
+      } 
+    };
+    res.send(message);
+  }
 
   
 
