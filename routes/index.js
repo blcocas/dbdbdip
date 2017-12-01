@@ -104,6 +104,11 @@ router.post('/message', (req, res) => {
     };
     res.send(message);  
   }
+
+  else if(_obj.content ==  '처음으로 돌아갑니다.'){
+    res.redirect('../keyboard');
+  }
+
   //나머지
   else {
     console.log("나머지");
@@ -119,7 +124,6 @@ router.post('/message', (req, res) => {
       } 
     };
     res.send(message);
-    res.redirect('../keyboard');
   }
 
   
