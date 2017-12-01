@@ -26,7 +26,7 @@ router.post('/message', (req, res) => {
       type: req.body.type,
       content: req.body.content
   };
-  let message = undefined;
+  //let message = undefined;
   //console.log(_obj.content);
   //console.log(typeof(_obj.content));
 
