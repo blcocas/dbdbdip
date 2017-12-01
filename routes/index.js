@@ -27,7 +27,7 @@ router.post('/message', (req, res) => {
         content: req.body.content
     };
     console.log(_obj.content);
-
+    console.log(typeof(_obj.content));
     let message = {
       "keyboard": {
           "type": "buttons",
@@ -42,6 +42,6 @@ router.post('/message', (req, res) => {
       },
     };
     res.send(message);
-    
+
 });
 module.exports = router;
