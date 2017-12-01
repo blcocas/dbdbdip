@@ -26,13 +26,14 @@ router.post('/message', (req, res) => {
       type: req.body.type,
       content: req.body.content
   };
+  let message = undefined;
   //console.log(_obj.content);
   //console.log(typeof(_obj.content));
 
   //안에서 먹을래!
   if(_obj.content ==  '안에서 먹을래'){
     console.log(_obj.content);
-    let message = {
+    var message = {
       "keyboard": {
           "type": "buttons",
           "buttons": [
@@ -48,11 +49,13 @@ router.post('/message', (req, res) => {
         "text": '안녕하세여'
       }
     };
+
   }
+
   //밖에서 먹을래!
   if(_obj.content ==  '밖에서 먹을래'){
     console.log(_obj.content);
-    let message = {
+    var message = {
       "keyboard": {
           "type": "buttons",
           "buttons": [
@@ -65,10 +68,11 @@ router.post('/message', (req, res) => {
       }
     };
   }
+  res.send(message);
   //밖 > 종류
   if(_obj.content ==  '종류로 검색'){
     console.log(_obj.content);
-    let message = {
+    var message = {
       "keyboard": {
           "type": "buttons",
           "buttons": [
@@ -84,10 +88,11 @@ router.post('/message', (req, res) => {
       }
     };
   }
+  res.send(message);
   //밖 > 음식
   if(_obj.content ==  '음식으로 검색'){
     console.log(_obj.content);
-    let message = {
+    var message = {
       "keyboard": {
           "type": "text"    
       },
@@ -95,9 +100,10 @@ router.post('/message', (req, res) => {
         "text": '안녕하세여'
       }
     };
-  }  
+  }
+  res.send(message);  
 
-  res.send(message);
+  
 
 });
 module.exports = router;
