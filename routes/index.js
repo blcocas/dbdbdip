@@ -30,8 +30,16 @@ router.post('/message', (req, res) => {
   //console.log(_obj.content);
   //console.log(typeof(_obj.content));
 
+  //처음 메뉴
+  if(_obj.content == '처음으로'){
+    let message = {
+      "type": 'buttons',
+      "buttons": ["안에서 먹을래", "밖에서 먹을래"]
+    };
+    res.send(message);
+  }
   //안에서 먹을래!
-  if(_obj.content ==  '안에서 먹을래'){
+  else if(_obj.content ==  '안에서 먹을래'){
     console.log(_obj.content);
     let message = {
       "keyboard": {
@@ -105,12 +113,6 @@ router.post('/message', (req, res) => {
     res.send(message);  
   }
 
-  else if(_obj.content ==  '처음으로'){
-    console.log("여기까지2");
-    res.redirect('../keyboard');
-    res.end();
-  }
-
   //나머지
   else {
     console.log("나머지");
@@ -126,8 +128,6 @@ router.post('/message', (req, res) => {
       } 
     };
     res.send(message);
-    console.log("여기까지1");
-    res.end();
   }
 
   
