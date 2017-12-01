@@ -128,10 +128,12 @@ router.post('/message', (req, res) => {
     var tmp;
     db.query(sql,[_obj.content]  ,function (err, rows, fields) {
       for(var i = 0; i<rows.length;i++){
+      console.log("1");
       console.log(rows[i].Rest_Name);
       tmp += rows[i].Rest_Name + '\n'
       }
     });
+    console.log("2");
     console.log(tmp);
     let message = {
       "keyboard": {
@@ -142,7 +144,7 @@ router.post('/message', (req, res) => {
       }
     };
     res.send(message);
-    changemode = 0; 
+    
   }
 
   //밖 > 음식
