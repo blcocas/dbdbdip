@@ -69,7 +69,7 @@ router.post('/message', (req, res) => {
     };
     res.send(message);  
   }
-  res.send(message);
+  
   //밖 > 종류
   else if(_obj.content ==  '종류로 검색'){
     console.log(_obj.content);
@@ -90,7 +90,7 @@ router.post('/message', (req, res) => {
     };
     res.send(message);  
   }
-  res.send(message);
+  
   //밖 > 음식
   else if(_obj.content ==  '음식으로 검색'){
     console.log(_obj.content);
