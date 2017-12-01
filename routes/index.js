@@ -124,6 +124,7 @@ router.post('/message', (req, res) => {
 
   //종류선택
   else if(changemode == 1){
+    consolt.log("여기1")
     console.log(_obj.content);
     let sql = 'select Rest_Name from FOOD_TYPE,RESTAURANT where Type_Num = T_Num and Type_Name = ?';
     var tmp;
