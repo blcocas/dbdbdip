@@ -121,7 +121,7 @@ router.post('/message', (req, res) => {
   }
 
   //종류선택
-  else if(_obj.content == '한식' || _obj.content == '일식' || _obj.content == '중식' || _obj.content == '양식' || _obj.content == '술집' || _obj.content == '기타')
+  else if(_obj.content == '한식' || _obj.content == '일식' || _obj.content == '중식' || _obj.content == '양식' || _obj.content == '술집' || _obj.content == '기타') {
     console.log("여기1");
     console.log(_obj.content);
     let sql = 'select Rest_Name from FOOD_TYPE,RESTAURANT where Type_Num = T_Num and Type_Name = ?';
