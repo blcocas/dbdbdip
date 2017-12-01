@@ -6,6 +6,7 @@ var mysql = require('mysql');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+var tmp = '';
 
 //mysql sever
 var db = mysql.createConnection({
@@ -125,7 +126,7 @@ router.post('/message', (req, res) => {
     console.log("여기1");
     console.log(_obj.content);
     let sql = 'select Rest_Name from FOOD_TYPE,RESTAURANT where Type_Num = T_Num and Type_Name = ?';
-    var tmp;
+    
     db.query(sql,[_obj.content]  ,function (err, rows, fields) {
       for(var i = 0; i<rows.length;i++){
         console.log("1");
