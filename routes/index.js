@@ -6,7 +6,30 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+//mysql sever
+var db = mysql.createConnection({
+  host: 'choosethis.cemhkd80ccxj.us-east-2.rds.amazonaws.com',
+  user: 'blcocas',
+  password: '201221027',
+  database: 'dbdbdeep'
+});
+//db connect
+db.connect();
 
+//db query example
+let sql = 'select * from FOOD where Food_Name = ?';
+
+db.query(sql,[tmp]  ,function (err, rows, fields) {
+  if(rows[0]){
+    for(var i = 0; i<rows.length;i++){
+      //console.log(rows.Food_Name);
+      console.log(rows[i].Food_Name);
+      console.log(rows[i].Food_Num);
+    }
+  }
+});
+//버튼 라우팅
+var changemode = 0;
 //초기 상태 get
 router.get('/keyboard', function(req, res){
 
@@ -62,7 +85,7 @@ router.post('/message', (req, res) => {
           ]
       },
       "message": {
-        "text": '안녕하세여'
+        "text": '메뉴를 선택하세요.'
       }
     };
     res.send(message);  
@@ -80,7 +103,7 @@ router.post('/message', (req, res) => {
           ]
       },
       "message": {
-        "text": '안녕하세여'
+        "text": '메뉴를 선택하세요.'
       }
     };
     res.send(message);  
@@ -97,16 +120,46 @@ router.post('/message', (req, res) => {
               "일식",
               "중식",
               "양식",
+              "술집",
               "기타"
           ]
       },
       "message": {
-        "text": '안녕하세여'
+        "text": '메뉴를 선택하세요.'
       }
     };
+    changemode = 1;
     res.send(message);  
   }
-  
+
+  //종류선택
+  else if(changemode == 1){
+    console.log(_obj.content);
+    let sql = 'select Rest_Name from FOOD_TYPE,RESTAURANT where Type_Num = T_Num and Type_Name = ?';
+    let tmp;
+    db.query(sql,[_obj.content]  ,function (err, rows, fields) {
+      if(rows[0]){
+        for(var i = 0; i<rows.length;i++){
+        //console.log(rows.Food_Name);
+        //console.log(rows[i].Food_Name);
+        //console.log(rows[i].Food_Num);
+        tmp = rows[i].Rest_Name
+        }
+      }
+    });
+
+    let message = {
+      "keyboard": {
+          "type": "text"    
+      },
+      "message": {
+        "text": tmp
+      }
+    };
+    res.send(message);
+    changemode = 0; 
+  }
+
   //밖 > 음식
   else if(_obj.content ==  '음식으로 검색'){
     console.log(_obj.content);
