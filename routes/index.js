@@ -57,6 +57,7 @@ router.post('/message', (req, res) => {
       }
     };
     res.send(message);
+    var = ''
   }
   //안에서 먹을래!
   else if(_obj.content ==  '안에서 먹을래'){
