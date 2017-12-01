@@ -108,11 +108,18 @@ router.post('/message', (req, res) => {
   else {
     console.log("나머지");
     let message = {
+      "keyboard": {
+          "type": "buttons",
+          "buttons": [
+              "처음으로",    
+          ]
+      },
       "message": {
-        "text" : '안녕하세여'
+        "text" : '처음으로 돌아갑니다.'
       } 
     };
     res.send(message);
+    res.redirect('../keyboard');
   }
 
   
