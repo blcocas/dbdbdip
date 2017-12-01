@@ -129,9 +129,7 @@ router.post('/message', (req, res) => {
     var tmp;
     db.query(sql,[_obj.content]  ,function (err, rows, fields) {
       for(var i = 0; i<rows.length;i++){
-        //console.log(rows.Food_Name);
-        //console.log(rows[i].Food_Name);
-        //console.log(rows[i].Food_Num);
+      console.log(rows[i].Rest_Name);
       tmp += rows[i].Rest_Name + '\n'
       }
     });
