@@ -128,23 +128,24 @@ router.post('/message', (req, res) => {
     var tmp;
     db.query(sql,[_obj.content]  ,function (err, rows, fields) {
       for(var i = 0; i<rows.length;i++){
-      console.log("1");
-      console.log(rows[i].Rest_Name);
-      tmp += rows[i].Rest_Name + '\n'
-      console.log("next",function(){
+        console.log("1");
+        console.log(rows[i].Rest_Name);
+        tmp += rows[i].Rest_Name + '\n'
+      }
+      console.log("next");
+      function (){
         console.log("2");
         console.log(tmp);
         let message = {
-          "keyboard": {
-            "type": "text"    
-          },
-          "message": {
-          "text": tmp
+        "keyboard": {
+        "type": "text"    
+        },
+        "message": {
+        "text": tmp
         }
-        };
         res.send(message);
-      });
-      }
+        };
+      };
     });
   }
 
