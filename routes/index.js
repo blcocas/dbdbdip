@@ -53,7 +53,7 @@ router.post('/message', (req, res) => {
   }
 
   //밖에서 먹을래!
-  if(_obj.content ==  '밖에서 먹을래'){
+  else if(_obj.content ==  '밖에서 먹을래'){
     console.log(_obj.content);
     let message = {
       "keyboard": {
@@ -71,7 +71,7 @@ router.post('/message', (req, res) => {
   }
   res.send(message);
   //밖 > 종류
-  if(_obj.content ==  '종류로 검색'){
+  else if(_obj.content ==  '종류로 검색'){
     console.log(_obj.content);
     let message = {
       "keyboard": {
@@ -92,7 +92,7 @@ router.post('/message', (req, res) => {
   }
   res.send(message);
   //밖 > 음식
-  if(_obj.content ==  '음식으로 검색'){
+  else if(_obj.content ==  '음식으로 검색'){
     console.log(_obj.content);
     let message = {
       "keyboard": {
@@ -104,12 +104,12 @@ router.post('/message', (req, res) => {
     };
     res.send(message);  
   }
-  
-  if(_obj.content){
+  //나머지
+  else {
     console.log("나머지");
     let message = {
       "message": {
-        "test" : '안녕하세여'
+        "text" : '안녕하세여'
       } 
     };
     res.send(message);
