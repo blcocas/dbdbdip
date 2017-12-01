@@ -128,16 +128,14 @@ router.post('/message', (req, res) => {
     let sql = 'select Rest_Name from FOOD_TYPE,RESTAURANT where Type_Num = T_Num and Type_Name = ?';
     var tmp;
     db.query(sql,[_obj.content]  ,function (err, rows, fields) {
-      if(rows[0]){
-        for(var i = 0; i<rows.length;i++){
+      for(var i = 0; i<rows.length;i++){
         //console.log(rows.Food_Name);
         //console.log(rows[i].Food_Name);
         //console.log(rows[i].Food_Num);
-        tmp = rows[i].Rest_Name
-        }
+      tmp += rows[i].Rest_Name + '\n'
       }
     });
-
+    console.log(tmp);
     let message = {
       "keyboard": {
           "type": "text"    
