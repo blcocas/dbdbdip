@@ -131,20 +131,21 @@ router.post('/message', (req, res) => {
       console.log("1");
       console.log(rows[i].Rest_Name);
       tmp += rows[i].Rest_Name + '\n'
+      console.log("next",function(){
+        console.log("2");
+        console.log(tmp);
+        let message = {
+          "keyboard": {
+            "type": "text"    
+          },
+          "message": {
+          "text": tmp
+        }
+        };
+        res.send(message);
+      });
       }
     });
-    console.log("2");
-    console.log(tmp);
-    let message = {
-      "keyboard": {
-          "type": "text"    
-      },
-      "message": {
-        "text": tmp
-      }
-    };
-    res.send(message);
-    
   }
 
   //밖 > 음식
