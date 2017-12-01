@@ -28,9 +28,10 @@ router.post('/message', (req, res) => {
     };
     console.log(_obj.content);
     console.log(typeof(_obj.content));
-    if(_obj.contest ==  "뭐먹을래")
+    if(_obj.content ==  '뭐먹을래')
       console.log("hello");
-      
+    if(JSON.stringify(_obj.content) == '뭐먹을래')
+      console.log("hello2");
     let message = {
       "keyboard": {
           "type": "buttons",
