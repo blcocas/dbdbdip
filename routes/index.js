@@ -130,7 +130,12 @@ router.post('/message', (req, res) => {
       for(var i = 0; i<rows.length;i++){
         console.log("1");
         console.log(rows[i].Rest_Name);
-        tmp += rows[i].Rest_Name + '\n'
+        if(rows.length-1 == i)
+          tmp += rows[i].Rest_Name;
+        else{
+          tmp = '';
+          tmp += rows[i].Rest_Name + '\n';
+        }
       }
          
       let cb = function(){
