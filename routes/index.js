@@ -106,7 +106,9 @@ router.post('/message', (req, res) => {
   }
 
   else if(_obj.content ==  '처음으로'){
+    console.log("여기까지2");
     res.redirect('../keyboard');
+    res.end();
   }
 
   //나머지
@@ -124,6 +126,8 @@ router.post('/message', (req, res) => {
       } 
     };
     res.send(message);
+    console.log("여기까지1");
+    res.end();
   }
 
   
